@@ -18,7 +18,7 @@
         android:id="@+id/textNaziv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editNaziv"
+        android:layout_alignBaseline="@+id/editNaziv"
         android:layout_alignParentStart="true"
         android:layout_marginStart="22dp"
         android:gravity="center"
@@ -28,7 +28,7 @@
     <EditText
         android:id="@+id/editNaziv"
         android:layout_width="159dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/editCena"
         android:layout_marginTop="67dp"
