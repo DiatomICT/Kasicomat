@@ -39,6 +39,15 @@
         android:textStyle="bold" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textDetaljiCena"
+        android:layout_toEndOf="@+id/textPonudaKredita"
+        android:text="RSD"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/textPonudaKredita"
         android:layout_width="269dp"
         android:layout_height="wrap_content"

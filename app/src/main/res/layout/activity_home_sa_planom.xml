@@ -22,7 +22,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textCenaValue"
         android:layout_marginTop="67dp"
-        android:gravity="center"
+        android:gravity="left"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
     <TextView
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textNaziv"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="112dp"
         android:gravity="center"
         android:text="Cena"
         android:textSize="20dp"
@@ -43,9 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textCena"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="left"
         android:inputType="number"
+        android:textSize="20dp"
         android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/textRsdCena"
@@ -75,8 +78,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textSakupljeno"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="left"
         android:inputType="number"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
     <TextView
