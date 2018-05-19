@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textDetaljiStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="114dp"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:text="Detalji štednje" />
+
+    <TextView
+        android:id="@+id/textNaziv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editNaziv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:gravity="center"
+        android:text="Naziv"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editNaziv"
+        android:layout_width="159dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/idCenaValue"
+        android:layout_marginTop="67dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textCena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginTop="119dp"
+        android:gravity="center"
+        android:text="Cena"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/idCenaValue"
+        android:layout_width="99dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/spinnerKategorija"
+        android:layout_alignTop="@+id/textCena"
+        android:gravity="center"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/idRsd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/idCenaValue"
+        android:layout_alignEnd="@+id/spinnerKategorija"
+        android:text="RSD"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textKategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginTop="166dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Kategorija" />
+
+    <Spinner
+        android:id="@+id/spinnerKategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textKategorija"
+        android:layout_alignStart="@+id/spinnerPodkategorija"
+        android:entries="@array/kategorija_arrays"
+        android:prompt="@string/kategorija_prompt"></Spinner>
+
+    <TextView
+        android:id="@+id/textPodkategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginTop="214dp"
+        android:gravity="center"
+        android:text="Podkategorija"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/spinnerPodkategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/spinnerPeriodStednje"
+        android:layout_alignTop="@+id/textPodkategorija"></Spinner>
+
+    <TextView
+        android:id="@+id/textPeriodStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginBottom="212dp"
+        android:gravity="center"
+        android:text="Period štednje"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/spinnerPeriodStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textPeriodStednje"
+        android:layout_alignEnd="@+id/textDetaljiStednje"
+        android:entries="@array/period_stednje_arrays"
+        android:prompt="@string/period_stednje_prompt"></Spinner>
+
+    <TextView
+        android:id="@+id/textIzaberiNacinStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginBottom="161dp"
+        android:gravity="center"
+        android:text="Izaberi način štednje:"
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupIzaberiNacinStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginBottom="69dp">
+
+        <RadioButton
+            android:id="@+id/radioBtnKusur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Kusur"
+            android:textSize="20dp"
+            android:padding="10dp"/>
+
+        <RadioButton
+            android:id="@+id/radioBtnFiksniIznos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Fiksni iznos"
+            android:textSize="20dp"
+            android:padding="10dp" />
+
+    </RadioGroup>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingKusur"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="124dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingFiksniIznos"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:rippleColor="@android:color/background_dark"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+</RelativeLayout>
