@@ -8,11 +8,11 @@
         android:id="@+id/textDetaljiStednje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="114dp"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:gravity="center"
+        android:padding="10dp"
         android:text="Detalji štednje"
         android:textStyle="bold"/>
 
@@ -20,42 +20,45 @@
         android:id="@+id/textCena"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textModel"
-        android:layout_marginTop="218dp"
+        android:layout_below="@+id/textModel"
         android:text="Cena"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/textModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textBrend"
-        android:layout_marginTop="163dp"
+        android:layout_below="@+id/textBrend"
+        android:layout_alignLeft="@+id/textBrend"
         android:text="Model"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
     <TextView
         android:id="@+id/textBrend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editBrend"
-        android:layout_alignStart="@+id/textKategorija"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textKategorija"
+        android:layout_alignLeft="@+id/textKategorija"
         android:text="Brend"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
     <TextView
         android:id="@+id/textKategorija"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner"
-        android:layout_alignStart="@+id/textPeriodStednje"
+        android:layout_alignParentStart="true"
         android:text="Kategorija"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_below="@+id/textDetaljiStednje" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerKategorija"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -68,8 +71,8 @@
         android:id="@+id/editBrend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editModel"
-        android:layout_alignStart="@+id/spinner"
+        android:layout_alignStart="@+id/spinnerKategorija"
+        android:layout_alignTop="@+id/textBrend"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -78,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textModel"
-        android:layout_alignStart="@+id/spinner"
+        android:layout_alignStart="@+id/spinnerKategorija"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -95,7 +98,7 @@
         android:id="@+id/btnDodajSliku"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/spinner"
+        android:layout_alignEnd="@+id/spinnerKategorija"
         android:layout_alignTop="@+id/editCena"
         android:text="Slika" />
 
@@ -103,38 +106,37 @@
         android:id="@+id/textPeriodStednje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="227dp"
-        android:layout_marginEnd="-114dp"
-        android:layout_toStartOf="@+id/textDetaljiStednje"
+        android:layout_alignStart="@+id/textCena"
+        android:layout_below="@+id/textCena"
         android:text="Period štednje"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp" />
 
     <Spinner
         android:id="@+id/spinnerPeriodStednje"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textPeriodStednje"
-        android:layout_alignStart="@+id/spinner"
+        android:layout_alignStart="@+id/editCena"
+        android:layout_alignBaseline="@+id/textPeriodStednje"
+        android:layout_centerHorizontal="true"
         android:entries="@array/period_stednje_arrays"
         android:prompt="@string/period_stednje_prompt" />
 
     <TextView
         android:id="@+id/textIzaberiteNacinStednje"
-        android:layout_width="316dp"
-        android:layout_height="33dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textModel"
-        android:layout_marginBottom="172dp"
-        android:text="Izaberite nacin štednje"
-        android:textStyle="bold" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textPeriodStednje"
+        android:layout_below="@+id/textPeriodStednje"
+        android:text="Izaberite nacin štednje:"
+        android:textStyle="bold"
+        android:padding="10dp" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="76dp"
+        android:layout_below="@+id/textIzaberiteNacinStednje"
         android:layout_toEndOf="@+id/textModel">
 
         <RadioButton
@@ -184,9 +186,8 @@
         android:id="@+id/imgSlikaProizvoda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textDetaljiStednje"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="84dp"
+        android:layout_above="@+id/btnDalje"
+        android:layout_centerHorizontal="true"
         android:visibility="visible"
         app:srcCompat="@mipmap/bid_box" />
 
