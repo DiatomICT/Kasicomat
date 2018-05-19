@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="40dp">
+    <TextView
+        android:id="@+id/textKorisnik"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:textSize="23dp"
+        android:text="Naziv"/>
 
+    <TextView
+        android:id="@+id/textProcenatSakupljenogRetailer"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="200dp"
+        android:textAlignment="center"
+        android:textSize="23dp"
+        android:text="Cena"/>
+
+    <TextView
+        android:id="@+id/textNazivPredmeta"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="100dp"
+        android:textAlignment="center"
+        android:textSize="23dp"
+        android:text="Predmet"/>
+
+    <Button
+        android:id="@+id/btnPosaljiPonudu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:text="Ponudi" />
+
+    
 </FrameLayout>

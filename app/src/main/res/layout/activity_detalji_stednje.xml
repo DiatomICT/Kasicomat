@@ -4,12 +4,23 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textDetaljiStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="114dp"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:text="Detalji štednje" />
+
+    <TextView
         android:id="@+id/textCena"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textKategorija"
-        android:layout_marginTop="193dp"
+        android:layout_marginTop="240dp"
         android:text="Cena" />
 
     <TextView
@@ -18,14 +29,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textCena"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="159dp"
         android:text="Model" />
 
     <TextView
         android:id="@+id/textBrend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editBrend"
+        android:layout_alignBaseline="@+id/editBrend"
         android:layout_alignStart="@+id/textCena"
         android:text="Brend" />
 
@@ -33,29 +44,26 @@
         android:id="@+id/textKategorija"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/textDetaljiStednje"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Kategorija" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textKategorija"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="134dp"
+        android:layout_alignStart="@+id/editCena"
+        android:layout_alignTop="@+id/textKategorija"
         android:entries="@array/kategorija_arrays"
-        android:prompt="@string/kategorija_prompt"/>
+        android:prompt="@string/kategorija_prompt" />
 
     <EditText
         android:id="@+id/editBrend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/editModel"
         android:layout_alignStart="@+id/spinner"
-        android:layout_marginTop="58dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -63,7 +71,7 @@
         android:id="@+id/editModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textModel"
+        android:layout_alignBaseline="@+id/textModel"
         android:layout_alignStart="@+id/spinner"
         android:ems="10"
         android:inputType="textPersonName" />
@@ -73,7 +81,7 @@
         android:layout_width="119dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textCena"
-        android:layout_alignStart="@+id/spinner"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="number" />
 
@@ -81,27 +89,27 @@
         android:id="@+id/btnDodajSliku"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textCena"
-        android:layout_alignEnd="@+id/editBrend"
+        android:layout_alignEnd="@+id/spinner"
+        android:layout_alignTop="@+id/editCena"
         android:text="Slika" />
 
     <TextView
         android:id="@+id/textPeriodStednje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textCena"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="211dp"
         android:text="Period stednje" />
 
     <Spinner
         android:id="@+id/spinnerPeriodStednje"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="140dp"
+        android:layout_alignBottom="@+id/textPeriodStednje"
+        android:layout_alignStart="@+id/spinner"
         android:entries="@array/period_stednje_arrays"
-        android:prompt="@string/period_stednje_prompt"/>
+        android:prompt="@string/period_stednje_prompt" />
 
     <TextView
         android:id="@+id/textView6"

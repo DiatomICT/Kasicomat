@@ -19,6 +19,9 @@ public class Plan {
     @ColumnInfo(name = "cena")
     private int cena;
 
+    @ColumnInfo(name = "sakupljeno")
+    private int sakupljeno;
+
     @ColumnInfo(name = "rezim_id")
     private int rezimId;
 
@@ -29,9 +32,10 @@ public class Plan {
 
     }
 
-    public Plan(String nazivProizvoda, int cena, int rezimId, int periodStednjeId) {
+    public Plan(String nazivProizvoda, int cena, int sakupljeno, int rezimId, int periodStednjeId) {
         this.nazivProizvoda = nazivProizvoda;
         this.cena = cena;
+        this.sakupljeno = sakupljeno;
         this.rezimId = rezimId;
         this.periodStednjeId = periodStednjeId;
     }
@@ -58,6 +62,14 @@ public class Plan {
 
     public void setCena(int cena) {
         this.cena = cena;
+    }
+
+    public int getSakupljeno() {
+        return sakupljeno;
+    }
+
+    public void setSakupljeno(int sakupljeno) {
+        this.sakupljeno = sakupljeno;
     }
 
     public int getRezimId() {

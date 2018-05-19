@@ -39,9 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_sa_planom);
 
         mRecyclerView = findViewById(R.id.my_recycler_view);
-
         mRecyclerView.setHasFixedSize(true);
-
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
@@ -75,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
 
             ((TextView)findViewById(R.id.textNazivValue)).setText(plan.getNazivProizvoda());
             ((TextView)findViewById(R.id.textCenaValue)).setText(String.valueOf(plan.getCena()));
-            ((TextView)findViewById(R.id.textSakupljenoValue)).setText("0"); // TODO dodaj ovo kao polje u bazu
+            ((TextView)findViewById(R.id.textSakupljenoValue)).setText(String.valueOf(plan.getSakupljeno())); // TODO dodaj ovo kao polje u bazu
 
             StringBuffer sb = new StringBuffer();
             sb.append(plan.getNazivProizvoda()); sb.append("\n");
