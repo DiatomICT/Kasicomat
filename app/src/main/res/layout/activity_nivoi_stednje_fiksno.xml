@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="FIKSNI NIVOI ŠTEDNJE"
+        android:textSize="30dp"
+        />
+
+    <RadioGroup
+        android:id="@+id/rgFiksniIznos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitle"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:checkedButton="@+id/rbI1">
+
+
+        <RadioButton
+            android:id="@+id/rbI1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="5 RSD"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/rbI2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="10 RSD"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/rbI3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="20 RSD"
+            android:textSize="20dp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbI4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="DRUGI IZNOS"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/editI4"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/rbI4"
+                android:layout_gravity="start"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/rbI4"
+                android:hint="RSD"
+                android:inputType="number"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btnSacuvajPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="SAČUVAJ PLAN"
+
+        />
+
+</RelativeLayout>
