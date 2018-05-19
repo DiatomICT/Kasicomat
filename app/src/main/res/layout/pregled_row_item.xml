@@ -7,7 +7,8 @@
         android:layout_height="match_parent"
         android:textAlignment="center"
         android:textSize="23dp"
-        android:text="Naziv"/>
+        android:text="Naziv"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textProcenatSakupljenogRetailer"
@@ -16,7 +17,8 @@
         android:layout_marginLeft="200dp"
         android:textAlignment="center"
         android:textSize="23dp"
-        android:text="Cena"/>
+        android:text="Cena"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textNazivPredmeta"
@@ -25,7 +27,8 @@
         android:layout_marginLeft="100dp"
         android:textAlignment="center"
         android:textSize="23dp"
-        android:text="Predmet"/>
+        android:text="Predmet"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnPosaljiPonudu"
