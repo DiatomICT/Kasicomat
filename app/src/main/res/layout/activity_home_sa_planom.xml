@@ -16,10 +16,10 @@
     <TextView
         android:id="@+id/textNazivValue"
         android:layout_width="159dp"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editCena"
-        android:layout_marginTop="56dp"
+        android:layout_alignStart="@+id/textCenaValue"
+        android:layout_marginTop="53dp"
         android:gravity="center" />
 
     <TextView
@@ -33,12 +33,12 @@
         android:text="Cena"
         android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/editCena"
+    <TextView
+        android:id="@+id/textCenaValue"
         android:layout_width="99dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textCena"
-        android:layout_toStartOf="@+id/textRsdCena"
+        android:layout_alignBottom="@+id/textCena"
+        android:layout_alignStart="@+id/textSakupljenoValue"
         android:gravity="center"
         android:inputType="number" />
 
@@ -46,14 +46,13 @@
         android:id="@+id/textRsdCena"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/textRsdSakupljeno"
         android:layout_alignTop="@+id/textCena"
-        android:layout_marginEnd="102dp"
         android:text="RSD"
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/textSaklupljeno"
+        android:id="@+id/textSakupljeno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -63,12 +62,12 @@
         android:text="Sakupljeno"
         android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/editSakupljeno"
+    <TextView
+        android:id="@+id/textSakupljenoValue"
         android:layout_width="99dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editCena"
-        android:layout_toStartOf="@+id/textRsdCena"
+        android:layout_alignBottom="@+id/textSakupljeno"
+        android:layout_alignEnd="@+id/btnAnalizaPlana"
         android:gravity="center"
         android:inputType="number" />
 
@@ -77,8 +76,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/textSaklupljeno"
-        android:layout_marginEnd="102dp"
+        android:layout_alignTop="@+id/textSakupljeno"
+        android:layout_marginEnd="83dp"
         android:text="RSD"
         android:textSize="20dp" />
 
