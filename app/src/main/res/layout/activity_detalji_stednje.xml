@@ -1,5 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textCena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textKategorija"
+        android:layout_marginTop="193dp"
+        android:text="Cena" />
+
+    <TextView
+        android:id="@+id/textModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textCena"
+        android:layout_marginTop="140dp"
+        android:text="Model" />
+
+    <TextView
+        android:id="@+id/textBrend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editBrend"
+        android:layout_alignStart="@+id/textCena"
+        android:text="Brend" />
+
+    <TextView
+        android:id="@+id/textKategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="30dp"
+        android:text="Kategorija" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textKategorija"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="134dp"
+        android:entries="@array/kategorija_arrays"
+        android:prompt="@string/kategorija_prompt"/>
+
+    <EditText
+        android:id="@+id/editBrend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/spinner"
+        android:layout_marginTop="58dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textModel"
+        android:layout_alignStart="@+id/spinner"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editCena"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textCena"
+        android:layout_alignStart="@+id/spinner"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnDodajSliku"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textCena"
+        android:layout_alignEnd="@+id/editBrend"
+        android:text="Slika" />
+
+    <TextView
+        android:id="@+id/textPeriodStednje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textCena"
+        android:layout_centerVertical="true"
+        android:text="Period stednje" />
+
+    <Spinner
+        android:id="@+id/spinnerPeriodStednje"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="140dp"
+        android:entries="@array/period_stednje_arrays"
+        android:prompt="@string/period_stednje_prompt"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="316dp"
+        android:layout_height="33dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textCena"
+        android:layout_marginBottom="160dp"
+        android:text="Izaberite nacin stednje" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnDalje"
+        android:layout_alignStart="@+id/textCena">
+
+        <RadioButton
+            android:id="@+id/radioBtnKusur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kusur" />
+
+        <RadioButton
+            android:id="@+id/radioBtnFiksno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Fiksno" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btnDalje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="Dalje" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabKusur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/radioGroup"
+        android:layout_toEndOf="@+id/textPeriodStednje"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabFiksno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/radioGroup"
+        android:layout_toEndOf="@+id/textPeriodStednje"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <ImageView
+        android:id="@+id/imgSlikaProizvoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fabKusur"
+        android:layout_marginBottom="-38dp"
+        android:layout_marginEnd="-33dp"
+        android:layout_toStartOf="@+id/btnDodajSliku"
+        android:visibility="visible"
+        app:srcCompat="@mipmap/bid_box" />
 
 </RelativeLayout>
