@@ -1,16 +1,23 @@
 package com.diatom.kasicomat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,11 +29,13 @@ import android.widget.Toast;
 import com.diatom.kasicomat.async.InsertPlanAsyncTask;
 import com.diatom.kasicomat.db.entities.Plan;
 
+import java.io.ByteArrayOutputStream;
 import java.util.concurrent.ExecutionException;
 
 public class DetaljiStednjeActivity extends AppCompatActivity {
 
     ImageView mImageView;
+    Button mBtnSlika;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +44,17 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
 
         mImageView = findViewById(R.id.imgSlikaProizvoda);
 
-        Button btnSlika = findViewById(R.id.btnDodajSliku);
-        btnSlika.setOnClickListener(new View.OnClickListener() {
+        mBtnSlika = findViewById(R.id.btnDodajSliku);
+        mBtnSlika.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 1);
+                if (ContextCompat.checkSelfPermission(DetaljiStednjeActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(DetaljiStednjeActivity.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},2);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 1);
+                }
             }
         });
 
@@ -107,8 +121,19 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                     String filepath = cursor.getString(columnIndex);
                     cursor.close();
 
+                    Log.i("DetaljiStednjeActivity", filepath);
+
                     Bitmap bitmap = BitmapFactory.decodeFile(filepath);
-                    Drawable drawable = new BitmapDrawable(bitmap);
+                    Log.i("DetaljiStednjeActivity", "Original: " + bitmap.getByteCount());
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out);
+
+                    byte[] bytes = out.toByteArray();
+                    Bitmap compressedBitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+
+                    Log.i("DetaljiStednjeActivity", "Compressed: " + compressedBitmap.getByteCount());
+
+                    Drawable drawable = new BitmapDrawable(getResources(), compressedBitmap);
                     mImageView.setImageDrawable(drawable);
                     mImageView.setVisibility(ImageView.VISIBLE);
                 }
@@ -118,5 +143,18 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 2: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 1);
+                } else {
+//                    mBtnSlika.setBackgroundColor(Color.GRAY);
+//                    mBtnSlika.setClickable(false);
+                }
+            }
+        }
+    }
 }
