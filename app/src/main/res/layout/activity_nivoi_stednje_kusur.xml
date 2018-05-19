@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="NIVOI ŠTEDNJE KUSUR"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textOdL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textTitle"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="OD"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editOdL1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textOdL1"
+        android:layout_toEndOf="@+id/textOdL1"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="RSD"
+        />
+
+    <TextView
+        android:id="@+id/textDoL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/editOdL1"
+        android:layout_toEndOf="@id/editOdL1"
+        android:padding="10dp"
+        android:text="DO"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editDoL1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textDoL1"
+        android:layout_toEndOf="@+id/textDoL1"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="RSD"
+        />
+
+    <TextView
+        android:id="@+id/textZaokruzitiNaL1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textOdL1"
+        android:layout_toEndOf="@+id/textOdL1"
+        android:padding="10dp"
+        android:text="ZAOKRUŽI NA"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editCifraL1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textOdL1"
+        android:layout_toEndOf="@+id/textZaokruzitiNaL1"
+        android:hint="RSD"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+
+
+
+    <TextView
+        android:id="@+id/textOdL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textOdL1"
+        android:layout_below="@+id/textZaokruzitiNaL1"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="OD"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editOdL2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textOdL2"
+        android:layout_toEndOf="@+id/textOdL2"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="RSD"
+        />
+
+    <TextView
+        android:id="@+id/textDoL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/editOdL2"
+        android:layout_toEndOf="@id/editOdL2"
+        android:padding="10dp"
+        android:text="DO"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editDoL2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textDoL2"
+        android:layout_toEndOf="@+id/textDoL2"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="RSD"
+        />
+
+    <TextView
+        android:id="@+id/textZaokruzitiNaL2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textOdL2"
+        android:layout_toEndOf="@+id/textOdL2"
+        android:padding="10dp"
+        android:text="ZAOKRUŽI NA"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editCifraL2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textOdL2"
+        android:layout_toEndOf="@+id/textZaokruzitiNaL2"
+        android:hint="RSD"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+
+
+    <TextView
+        android:id="@+id/textOdL3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textOdL2"
+        android:layout_below="@+id/textZaokruzitiNaL2"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="OD"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editOdL3"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textOdL3"
+        android:layout_toEndOf="@+id/textOdL3"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="RSD"
+        />
+
+    <TextView
+        android:id="@+id/textDoL3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/editOdL3"
+        android:layout_toEndOf="@id/editOdL3"
+        android:padding="10dp"
+        android:text="DO"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editDoL3"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textDoL3"
+        android:layout_toEndOf="@+id/textDoL3"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="RSD"
+        />
+
+    <TextView
+        android:id="@+id/textZaokruzitiNaL3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textOdL3"
+        android:layout_toEndOf="@+id/textOdL3"
+        android:padding="10dp"
+        android:text="ZAOKRUŽI NA"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editCifraL3"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textOdL3"
+        android:layout_toEndOf="@+id/textZaokruzitiNaL3"
+        android:hint="RSD"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+
+    <Button
+        android:id="@+id/btnSacuvajPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="SAČUVAJ PLAN"
+
+        />
+</RelativeLayout>
