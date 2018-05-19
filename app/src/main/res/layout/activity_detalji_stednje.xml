@@ -30,7 +30,7 @@
         android:layout_width="159dp"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/idCenaValue"
+        android:layout_alignStart="@+id/editCenaValue"
         android:layout_marginTop="67dp"
         android:gravity="center" />
 
@@ -46,7 +46,7 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/idCenaValue"
+        android:id="@+id/editCenaValue"
         android:layout_width="99dp"
         android:layout_height="35dp"
         android:layout_alignStart="@+id/spinnerKategorija"
@@ -55,10 +55,10 @@
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/idRsd"
+        android:id="@+id/textRsd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/idCenaValue"
+        android:layout_alignBottom="@+id/editCenaValue"
         android:layout_alignEnd="@+id/spinnerKategorija"
         android:text="RSD"
         android:textSize="20dp" />
