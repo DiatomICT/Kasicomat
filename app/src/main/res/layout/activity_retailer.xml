@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textKategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingStart="20dp"
+        android:paddingTop="30dp"
+        android:layout_alignStart="@+id/textNaziv"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Kategorija" />
+
+    <Spinner
+        android:id="@+id/spinnerKategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textKategorija"
+        android:layout_alignStart="@+id/spinnerPodkategorija"
+        android:entries="@array/kategorija_arrays"
+        android:prompt="@string/kategorija_prompt"></Spinner>
+
+    <TextView
+        android:id="@+id/textPodkategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingStart="20dp"
+        android:paddingTop="60dp"
+        android:gravity="center"
+        android:text="Podkategorija"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/spinnerPodkategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"></Spinner>
+
+    <com.appyvet.materialrangebar.RangeBar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rangeCena"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_below="@+id/textPodkategorija"
+        android:layout_centerHorizontal="true"
+        app:mrb_pinMaxFont="10sp"
+        app:mrb_pinTextColor="#ACD123"
+        app:mrb_selectorBoundarySize="2dp"
+        app:mrb_selectorSize="10dp"
+        app:mrb_tickInterval="1"
+        app:mrb_tickStart="0" />
+
+    <TextView
+        android:id="@+id/textCenaProizvoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangeCena"
+        android:layout_centerHorizontal="true"
+        android:text="Cena proizvoda"
+        android:gravity="center"/>
+
+    <com.appyvet.materialrangebar.RangeBar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rangeProcenat"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCenaProizvoda"
+        app:mrb_pinMaxFont="10sp"
+        app:mrb_pinTextColor="#ACD123"
+        app:mrb_selectorBoundarySize="2dp"
+        app:mrb_selectorSize="10dp"
+        app:mrb_tickEnd="100"
+        app:mrb_tickInterval="1"
+        app:mrb_tickStart="0" />
+
+    <TextView
+        android:id="@+id/textProcenatSakupljenogNovca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangeProcenat"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Procenat sakupljenog novca" />
+
+</RelativeLayout>
