@@ -30,7 +30,7 @@
         android:layout_width="159dp"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editCenaValue"
+        android:layout_alignStart="@+id/editCena"
         android:layout_marginTop="67dp"
         android:gravity="center" />
 
@@ -46,7 +46,7 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/editCenaValue"
+        android:id="@+id/editCena"
         android:layout_width="99dp"
         android:layout_height="35dp"
         android:layout_alignStart="@+id/spinnerKategorija"
@@ -58,7 +58,7 @@
         android:id="@+id/textRsd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editCenaValue"
+        android:layout_alignBottom="@+id/editCena"
         android:layout_alignEnd="@+id/spinnerKategorija"
         android:text="RSD"
         android:textSize="20dp" />
@@ -183,5 +183,13 @@
         app:backgroundTint="@android:color/holo_green_light"
         app:rippleColor="@android:color/background_dark"
         app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <Button
+        android:id="@+id/btnDalje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Dalje" />
 
 </RelativeLayout>
