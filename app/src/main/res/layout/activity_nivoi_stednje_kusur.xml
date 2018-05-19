@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/sky"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +12,8 @@
         android:layout_centerHorizontal="true"
         android:padding="10dp"
         android:text="Nivoi štednje"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textOdL1"
@@ -220,9 +222,9 @@
         android:id="@+id/btnSacuvajPlanKusur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:text="SAČUVAJ PLAN"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
 
-        />
+        android:text="SAČUVAJ PLAN" />
 </RelativeLayout>
