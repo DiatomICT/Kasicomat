@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textNaziv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textNazivValue"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:gravity="center"
+        android:text="Naziv"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textNazivValue"
+        android:layout_width="159dp"
+        android:layout_height="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editCena"
+        android:layout_marginTop="56dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textCena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginTop="102dp"
+        android:gravity="center"
+        android:text="Cena"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editCena"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textCena"
+        android:layout_toStartOf="@+id/textRsdCena"
+        android:gravity="center"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textRsdCena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCena"
+        android:layout_marginEnd="102dp"
+        android:text="RSD"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textSaklupljeno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textNaziv"
+        android:layout_marginTop="153dp"
+        android:gravity="center"
+        android:text="Sakupljeno"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editSakupljeno"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editCena"
+        android:layout_toStartOf="@+id/textRsdCena"
+        android:gravity="center"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textRsdSakupljeno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textSaklupljeno"
+        android:layout_marginEnd="102dp"
+        android:text="RSD"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnAnalizaPlana"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="201dp"
+        android:layout_toEndOf="@+id/textNaziv"
+        android:text="Analiza plana" />
+
+</RelativeLayout>
