@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.diatom.kasicomat.async.InsertPlanAsyncTask;
 import com.diatom.kasicomat.db.entities.Plan;
@@ -51,10 +53,12 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 Intent intent = new Intent(DetaljiStednjeActivity.this.getApplicationContext(), isKusur ? NivoiStednjeKusurActivity.class : NivoiStednjeFiksnoActivity.class);
 
                 Plan plan = new Plan();
-                plan.setNazivProizvoda(((EditText)findViewById(R.id.editBrend)).getText().toString());
+                plan.setBrend(((EditText)findViewById(R.id.editBrend)).getText().toString());
+                plan.setModel(((EditText)findViewById(R.id.editModel)).getText().toString());
                 plan.setCena(Integer.parseInt(((EditText)findViewById(R.id.editCena)).getText().toString()));
                 plan.setRezimId(isKusur ? 1 : 2);
                 plan.setPeriodStednjeId((int) ((Spinner)findViewById(R.id.spinnerPeriodStednje)).getSelectedItemId() + 1);
+                plan.setKategorijaId((int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1);
 
                 try {
                     long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get();
@@ -66,6 +70,21 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 }
 
                 startActivity(intent);
+            }
+        });
+
+        FloatingActionButton fabKusur = findViewById(R.id.fabKusur);
+        fabKusur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DetaljiStednjeActivity.this, "\"Kusur\" rezim stednje svaku transakciju zaokruzuje na definisani veci iznos", Toast.LENGTH_LONG).show();
+            }
+        });
+        FloatingActionButton fabFiksno = findViewById(R.id.fabFiksno);
+        fabFiksno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DetaljiStednjeActivity.this, "\"Fiksno\" rezim stednje na svaku transakciju dodaje fiksan iznos koji prelazi na stedni racun", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -171,18 +171,20 @@
         android:layout_alignTop="@+id/radioGroup"
         android:layout_centerHorizontal="true"
         android:clickable="true"
+        android:scaleType="center"
         app:backgroundTint="@android:color/holo_green_light"
-        app:srcCompat="@android:drawable/ic_menu_info_details" />
+        app:srcCompat="@android:drawable/ic_menu_help" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabFiksno"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:scaleType="center"
         android:layout_alignBottom="@+id/radioGroup"
         android:layout_centerHorizontal="true"
         android:clickable="true"
         app:backgroundTint="@android:color/holo_green_light"
-        app:srcCompat="@android:drawable/ic_menu_info_details" />
+        app:srcCompat="@android:drawable/ic_menu_help" />
 
     <ImageView
         android:id="@+id/imgSlikaProizvoda"

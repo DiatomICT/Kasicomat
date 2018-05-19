@@ -38,6 +38,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_sa_planom);
 
+        Button btnAnalizaPlana = findViewById(R.id.btnAnalizaPlana);
+        btnAnalizaPlana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this.getApplicationContext(), PlanActivity.class));
+            }
+        });
+
         mRecyclerView = findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -71,29 +79,28 @@ public class HomeActivity extends AppCompatActivity {
             List<Plan> plans = new GetPlanAsyncTask(HomeActivity.this).execute().get();
             Plan plan = plans.get(0);
 
-            ((TextView)findViewById(R.id.textNazivValue)).setText(plan.getNazivProizvoda());
+            ((TextView)findViewById(R.id.textNazivValue)).setText(plan.getBrend() + " " + plan.getModel());
             ((TextView)findViewById(R.id.textCenaValue)).setText(String.valueOf(plan.getCena()));
             ((TextView)findViewById(R.id.textSakupljenoValue)).setText(String.valueOf(plan.getSakupljeno())); // TODO dodaj ovo kao polje u bazu
 
-            StringBuffer sb = new StringBuffer();
-            sb.append(plan.getNazivProizvoda()); sb.append("\n");
-            sb.append(plan.getCena()); sb.append("\n");
-            if (plan.getRezimId() == 1) {
-                // kusur
-                List<Kusur> kusurs = new GetKusurByPlanIdAsyncTask(HomeActivity.this).execute(plan.getId()).get();
-
-                for (Kusur k : kusurs) {
-                    sb.append(k); sb.append("\n");
-                }
-            } else {
-                // fiksno
-                List<Fiksno> fiksnos = new GetFiksnoByPlanIdAsyncTask(HomeActivity.this).execute(plan.getId()).get();
-
-                for (Fiksno f : fiksnos) {
-                    sb.append(f); sb.append("\n");
-                }
-            }
-            Toast.makeText(HomeActivity.this.getApplicationContext(), sb.toString(), Toast.LENGTH_LONG).show();
+            // DEBUG sta se nalazi u bazi; dal se lepo cita itd
+//            StringBuffer sb = new StringBuffer();
+//            if (plan.getRezimId() == 1) {
+//                // kusur
+//                List<Kusur> kusurs = new GetKusurByPlanIdAsyncTask(HomeActivity.this).execute(plan.getId()).get();
+//
+//                for (Kusur k : kusurs) {
+//                    sb.append(k); sb.append("\n");
+//                }
+//            } else {
+//                // fiksno
+//                List<Fiksno> fiksnos = new GetFiksnoByPlanIdAsyncTask(HomeActivity.this).execute(plan.getId()).get();
+//
+//                for (Fiksno f : fiksnos) {
+//                    sb.append(f); sb.append("\n");
+//                }
+//            }
+//            Toast.makeText(HomeActivity.this.getApplicationContext(), sb.toString(), Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

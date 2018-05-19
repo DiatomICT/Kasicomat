@@ -55,23 +55,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this.getApplicationContext(), DetaljiStednjeActivity.class);
 
-                try {
-                    List<Rezim> rezims = new GetRezimAsyncTask(MainActivity.this).execute().get();
-                    List<PeriodStednje> periodStednjes = new GetPeriodStednjeAsyncTask(MainActivity.this).execute().get();
-
-                    StringBuffer sb = new StringBuffer();
-                    for (Rezim r : rezims) {
-                        sb.append(r);
-                        sb.append("\n");
-                    }
-                    for (PeriodStednje p : periodStednjes) {
-                        sb.append(p);
-                        sb.append("\n");
-                    }
-                    Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                // DEBUG informacije sta se nalazi u bazi
+//                try {
+//                    List<Rezim> rezims = new GetRezimAsyncTask(MainActivity.this).execute().get();
+//                    List<PeriodStednje> periodStednjes = new GetPeriodStednjeAsyncTask(MainActivity.this).execute().get();
+//
+//                    StringBuffer sb = new StringBuffer();
+//                    for (Rezim r : rezims) {
+//                        sb.append(r);
+//                        sb.append("\n");
+//                    }
+//                    for (PeriodStednje p : periodStednjes) {
+//                        sb.append(p);
+//                        sb.append("\n");
+//                    }
+//                    Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_LONG).show();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 
                 startActivity(intent);
             }

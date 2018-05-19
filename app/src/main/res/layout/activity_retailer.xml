@@ -15,11 +15,11 @@
         android:text="Kategorija" />
 
     <Spinner
-        android:id="@+id/spinnerKategorija"
+        android:id="@+id/spinnerKategorijaRetailer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textKategorija"
-        android:layout_alignStart="@+id/spinnerPodkategorija"
+        android:layout_alignStart="@+id/spinnerPodkategorijaRetailer"
         android:entries="@array/kategorija_arrays"
         android:prompt="@string/kategorija_prompt"></Spinner>
 
@@ -36,7 +36,7 @@
         android:textSize="20dp" />
 
     <Spinner
-        android:id="@+id/spinnerPodkategorija"
+        android:id="@+id/spinnerPodkategorijaRetailer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

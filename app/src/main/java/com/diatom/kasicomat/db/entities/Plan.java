@@ -7,14 +7,18 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "tbl_plan", foreignKeys = {
         @ForeignKey(entity = Rezim.class, parentColumns = "id", childColumns = "rezim_id"),
-        @ForeignKey(entity = PeriodStednje.class, parentColumns = "id", childColumns = "period_stednje_id")
+        @ForeignKey(entity = PeriodStednje.class, parentColumns = "id", childColumns = "period_stednje_id"),
+        @ForeignKey(entity = Kategorija.class, parentColumns = "id", childColumns = "kategorija_id")
 })
 public class Plan {
     @PrimaryKey(autoGenerate = true)
     private long id;
 
-    @ColumnInfo(name = "naziv_proizvoda")
-    private String nazivProizvoda;
+    @ColumnInfo(name = "brend")
+    private String brend;
+
+    @ColumnInfo(name = "model")
+    private String model;
 
     @ColumnInfo(name = "cena")
     private int cena;
@@ -28,16 +32,21 @@ public class Plan {
     @ColumnInfo(name = "period_stednje_id")
     private int periodStednjeId;
 
+    @ColumnInfo(name = "kategorija_id")
+    private int kategorijaId;
+
     public Plan() {
 
     }
 
-    public Plan(String nazivProizvoda, int cena, int sakupljeno, int rezimId, int periodStednjeId) {
-        this.nazivProizvoda = nazivProizvoda;
+    public Plan(String brend, String model, int cena, int sakupljeno, int rezimId, int periodStednjeId, int kategorijaId) {
+        this.brend = brend;
+        this.model = model;
         this.cena = cena;
         this.sakupljeno = sakupljeno;
         this.rezimId = rezimId;
         this.periodStednjeId = periodStednjeId;
+        this.kategorijaId = kategorijaId;
     }
 
     public long getId() {
@@ -48,12 +57,20 @@ public class Plan {
         this.id = id;
     }
 
-    public String getNazivProizvoda() {
-        return nazivProizvoda;
+    public String getBrend() {
+        return brend;
     }
 
-    public void setNazivProizvoda(String nazivProizvoda) {
-        this.nazivProizvoda = nazivProizvoda;
+    public void setBrend(String brend) {
+        this.brend = brend;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getCena() {
@@ -86,5 +103,13 @@ public class Plan {
 
     public void setPeriodStednjeId(int periodStednjeId) {
         this.periodStednjeId = periodStednjeId;
+    }
+
+    public int getKategorijaId() {
+        return kategorijaId;
+    }
+
+    public void setKategorijaId(int kategorijaId) {
+        this.kategorijaId = kategorijaId;
     }
 }
