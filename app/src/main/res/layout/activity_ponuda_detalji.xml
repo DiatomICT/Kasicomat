@@ -35,4 +35,84 @@
         android:layout_marginTop="119dp"
         android:text="" />
 
+    <TextView
+        android:id="@+id/textPonudaKredita"
+        android:layout_width="269dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="225dp"
+        android:gravity="center"
+        android:text="Ponuda kredita:"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textSakupljenIznos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageDetalji"
+        android:layout_marginBottom="201dp"
+        android:gravity="center"
+        android:text="Sakupljen iznos:"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textSakupljenIznosValue"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textSakupljenIznos"
+        android:layout_marginEnd="73dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textSakupljenIznos"
+        android:layout_toEndOf="@+id/textPonudaKredita"
+        android:gravity="center"
+        android:text="RSD"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textIznosKredita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageDetalji"
+        android:layout_marginBottom="154dp"
+        android:gravity="center"
+        android:text="Iznos kredita:"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textIznosKreditaValue"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textSakupljenIznosValue"
+        android:layout_alignTop="@+id/textIznosKredita"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textIznosKredita"
+        android:layout_toEndOf="@+id/textPonudaKredita"
+        android:gravity="center"
+        android:text="RSD"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:layout_width="185dp"
+        android:layout_height="117dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/societe_generale" />
+
 </RelativeLayout>
