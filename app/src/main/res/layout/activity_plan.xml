@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/white"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <com.jjoe64.graphview.GraphView
@@ -18,7 +19,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="227dp"
         android:text="Očekivani datum završetka:"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textOcekivaniDatumZavrsetkaValue"
