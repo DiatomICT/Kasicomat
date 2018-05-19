@@ -42,4 +42,9 @@ public class Rezim {
             new Rezim("fiksno")
         };
     }
+
+    @Override
+    public String toString() {
+        return "Rezim(" + id + "," + tip + ")";
+    }
 }

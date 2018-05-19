@@ -73,4 +73,9 @@ public class Kusur {
     public void setPlanId(int planId) {
         this.planId = planId;
     }
+
+    @Override
+    public String toString() {
+        return "Kusur(" + minIznos + "," + maxIznos + "," + zaokruziNa + ")";
+    }
 }

@@ -21,11 +21,11 @@ public class NivoiStednjeKusurActivity extends AppCompatActivity {
 
         final Bundle extras = getIntent().getExtras();
 
-        Button btnSacuvajPlan = findViewById(0); // TODO
+        Button btnSacuvajPlan = findViewById(R.id.btnSacuvajPlanKusur); // TODO
         btnSacuvajPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NivoiStednjeKusurActivity.this.getApplicationContext(), null);
+                Intent intent = new Intent(NivoiStednjeKusurActivity.this.getApplicationContext(), HomeActivity.class);
 
                 int planId;
                 if (extras.keySet().contains("planId")) {

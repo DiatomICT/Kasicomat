@@ -43,10 +43,15 @@ public class PeriodStednje {
         String[] periodStednjeArray = context.getResources().getStringArray(R.array.period_stednje_arrays);
 
         return new PeriodStednje[]{
-            new PeriodStednje(Integer.parseInt(periodStednjeArray[0])),
-            new PeriodStednje(Integer.parseInt(periodStednjeArray[1])),
-            new PeriodStednje(Integer.parseInt(periodStednjeArray[2])),
-            new PeriodStednje(Integer.parseInt(periodStednjeArray[3])),
+            new PeriodStednje(3),
+            new PeriodStednje(6),
+            new PeriodStednje(9),
+            new PeriodStednje(12)
         };
+    }
+
+    @Override
+    public String toString() {
+        return "PeriodStednje(" + id + "," + trajanjeUMesecima + ")";
     }
 }
