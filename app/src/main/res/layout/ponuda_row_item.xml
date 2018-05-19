@@ -17,7 +17,8 @@
         android:layout_height="match_parent"
         android:textAlignment="center"
         android:textSize="27dp"
-        android:text="Naziv"/>
+        android:text="Naziv"
+        android:textStyle="bold" />
     <TextView
         android:id="@+id/textPonudaCena"
         android:layout_width="120dp"
@@ -25,6 +26,7 @@
         android:layout_marginLeft="240dp"
         android:textAlignment="center"
         android:textSize="27dp"
-        android:text="Cena"/>
+        android:text="Cena"
+        android:textStyle="bold" />
 
 </FrameLayout>
