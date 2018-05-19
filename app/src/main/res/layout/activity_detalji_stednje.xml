@@ -48,7 +48,7 @@
     <EditText
         android:id="@+id/editCena"
         android:layout_width="99dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@+id/spinnerKategorija"
         android:layout_alignTop="@+id/textCena"
         android:gravity="center"
