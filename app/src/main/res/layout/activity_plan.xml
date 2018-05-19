@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textOcekivaniDatumZavrsetka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="227dp"
+        android:text="Očekivani datum završetka:"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textOcekivaniDatumZavrsetkaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="192dp"
+        android:text=""
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnVidiPredlog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="89dp"
+        android:layout_toStartOf="@+id/btnIzmeniPlan"
+        android:text="Vidi predlog" />
+
+    <Button
+        android:id="@+id/btnIzmeniPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Izmeni plan" />
+
+    <Button
+        android:id="@+id/btnUzmiKredit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnVidiPredlog"
+        android:layout_toEndOf="@+id/btnIzmeniPlan"
+        android:text="Uzmi kredit" />
+</RelativeLayout>
