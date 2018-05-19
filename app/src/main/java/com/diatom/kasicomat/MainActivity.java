@@ -1,5 +1,6 @@
 package com.diatom.kasicomat;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleHomeSaPlanom() {
-
+        setContentView(R.layout.activity_home_sa_planom);
+        startActivity(new Intent(MainActivity.this.getApplicationContext(), HomeActivity.class));
     }
 
     private void handleHomeBezPlana() {
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home_bez_plana);
 
         Button btnNapraviPlan = findViewById(R.id.btnNapraviPlan);

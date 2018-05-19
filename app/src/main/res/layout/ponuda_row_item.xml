@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="40dp">
+
+
+    <ImageView
+        android:id="@+id/imageRetailer"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/bid_box" />
+
+    <TextView
+        android:id="@+id/textPonudaNaziv"
+        android:layout_marginLeft="120dp"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:textSize="27dp"
+        android:text="Naziv"/>
+    <TextView
+        android:id="@+id/textPonudaCena"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="240dp"
+        android:textAlignment="center"
+        android:textSize="27dp"
+        android:text="Cena"/>
+
+</FrameLayout>
