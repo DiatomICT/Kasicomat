@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetaljiStednjeActivity" />
-        <activity android:name=".NivoiStednjeKusurActivity"></activity>
+        <activity android:name=".NivoiStednjeKusurActivity" />
+        <activity android:name=".NivoiStednjeFiksnoActivity" />
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>

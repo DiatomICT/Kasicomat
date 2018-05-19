@@ -19,6 +19,7 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detalji_stednje);
 
         Button btnDalje = findViewById(R.id.btnDalje);
         btnDalje.setOnClickListener(new View.OnClickListener() {
@@ -26,13 +27,13 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isKusur = ((RadioButton) findViewById(R.id.radioBtnKusur)).isChecked();
 
-                Intent intent = new Intent(DetaljiStednjeActivity.this.getApplicationContext(), isKusur ? NivoiStednjeKusurActivity.class : NivoiStednjeKusurActivity.class);
+                Intent intent = new Intent(DetaljiStednjeActivity.this.getApplicationContext(), isKusur ? NivoiStednjeKusurActivity.class : NivoiStednjeFiksnoActivity.class);
 
                 Plan plan = new Plan();
                 plan.setNazivProizvoda(((EditText)findViewById(R.id.editNaziv)).getText().toString());
                 plan.setCena(Integer.parseInt(((EditText)findViewById(R.id.editCena)).getText().toString()));
-                plan.setRezimId(isKusur ? 0 : 1);
-                plan.setPeriodStednjeId((int) ((Spinner)findViewById(R.id.spinnerPeriodStednje)).getSelectedItemId());
+                plan.setRezimId(isKusur ? 1 : 2);
+                plan.setPeriodStednjeId((int) ((Spinner)findViewById(R.id.spinnerPeriodStednje)).getSelectedItemId() + 1);
 
                 try {
                     long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get();
