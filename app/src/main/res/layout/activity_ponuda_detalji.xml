@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,7 +24,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="87dp"
         android:layout_marginTop="62dp"
-        android:text="" />
+        android:text=""
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textDetaljiCena"
@@ -33,7 +35,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textDetaljiNaziv"
         android:layout_marginTop="119dp"
-        android:text="" />
+        android:text=""
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textPonudaKredita"
@@ -44,7 +47,8 @@
         android:layout_marginTop="225dp"
         android:gravity="center"
         android:text="Ponuda kredita:"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textSakupljenIznos"
@@ -55,7 +59,8 @@
         android:layout_marginBottom="201dp"
         android:gravity="center"
         android:text="Sakupljen iznos:"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textSakupljenIznosValue"
@@ -66,7 +71,8 @@
         android:layout_marginEnd="73dp"
         android:gravity="center"
         android:text=""
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +81,8 @@
         android:layout_toEndOf="@+id/textPonudaKredita"
         android:gravity="center"
         android:text="RSD"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textIznosKredita"
@@ -86,7 +93,8 @@
         android:layout_marginBottom="154dp"
         android:gravity="center"
         android:text="Iznos kredita:"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textIznosKreditaValue"
@@ -96,7 +104,8 @@
         android:layout_alignTop="@+id/textIznosKredita"
         android:gravity="center"
         android:text=""
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -105,7 +114,8 @@
         android:layout_toEndOf="@+id/textPonudaKredita"
         android:gravity="center"
         android:text="RSD"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="185dp"
