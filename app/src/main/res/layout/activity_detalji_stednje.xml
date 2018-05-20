@@ -96,10 +96,11 @@
 
     <Button
         android:id="@+id/btnDodajSliku"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="78dp"
+        android:layout_height="38dp"
         android:layout_alignEnd="@+id/spinnerKategorija"
-        android:layout_alignTop="@+id/editCena"
+        android:layout_alignTop="@+id/textCena"
+        android:background="@drawable/button"
         android:text="Slika" />
 
     <TextView
@@ -162,7 +163,8 @@
         android:layout_alignParentEnd="true"
         android:text="Dalje"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp" />
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabKusur"

@@ -35,7 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="300dp"
-        android:text="Ponudi" />
+        android:text="Ponudi"
+        android:background="@drawable/button"
+        android:padding="5dp" />
 
     
 </FrameLayout>

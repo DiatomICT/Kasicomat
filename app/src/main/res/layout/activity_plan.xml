@@ -39,7 +39,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="89dp"
         android:layout_toStartOf="@+id/btnIzmeniPlan"
-        android:text="Vidi predlog" />
+        android:text="Vidi predlog"
+        android:background="@drawable/button"
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/btnIzmeniPlan"
@@ -48,7 +50,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="Izmeni plan" />
+        android:text="Izmeni plan"
+        android:background="@drawable/button"
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/btnUzmiKredit"
@@ -56,5 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnVidiPredlog"
         android:layout_toEndOf="@+id/btnIzmeniPlan"
-        android:text="Uzmi kredit" />
+        android:text="Uzmi kredit"
+        android:background="@drawable/button"
+        android:padding="5dp" />
 </RelativeLayout>
