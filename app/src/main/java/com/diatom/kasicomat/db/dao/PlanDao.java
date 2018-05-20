@@ -25,4 +25,7 @@ public interface PlanDao {
 
     @Query("SELECT * FROM tbl_plan WHERE kategorija_id=:kategorijaId ORDER BY sakupljeno DESC")
     List<Plan> findPlansByCategory(long kategorijaId);
+
+    @Query("SELECT * FROM tbl_plan WHERE id=:id")
+    List<Plan> getPlanById(Long id);
 }

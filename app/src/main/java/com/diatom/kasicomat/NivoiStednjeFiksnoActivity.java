@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.diatom.kasicomat.async.GetPlanByIdAsyncTask;
 import com.diatom.kasicomat.async.InsertFiksnoAsyncTask;
+import com.diatom.kasicomat.async.UpdatePlanAsyncTask;
 import com.diatom.kasicomat.db.entities.Fiksno;
+import com.diatom.kasicomat.db.entities.Plan;
 
 public class NivoiStednjeFiksnoActivity extends AppCompatActivity {
 
@@ -41,6 +44,13 @@ public class NivoiStednjeFiksnoActivity extends AppCompatActivity {
                 int planId;
                 if (extras.keySet().contains("planId")) {
                     planId = (int) extras.getLong("planId");
+                    try {
+                        Plan plan = new GetPlanByIdAsyncTask(NivoiStednjeFiksnoActivity.this).execute((long) planId).get();
+                        plan.setSakupljeno(450 * fiksno);
+                        new UpdatePlanAsyncTask(NivoiStednjeFiksnoActivity.this).execute(plan);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     planId = -1;
                 }

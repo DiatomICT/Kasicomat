@@ -76,6 +76,7 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 int kategorijaId = (int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1;
                 plan.setKategorijaId(kategorijaId);
                 plan.setKorisnikId(1);
+                plan.setSakupljeno(4500);
                 long DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
                 long current = System.currentTimeMillis();
                 long ago4 = current - DAY_IN_MILLIS * 4 * 30;

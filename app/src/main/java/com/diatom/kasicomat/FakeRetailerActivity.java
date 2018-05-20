@@ -55,7 +55,7 @@ public class FakeRetailerActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    mRangeCena.setTickEnd(80000);
+                    mRangeCena.setTickEnd(5);
                     mRangeCena.setRangePinsByIndices(0, 5);
                 } else {
                     mRangeCena.setTickEnd(500);

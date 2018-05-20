@@ -61,8 +61,6 @@ public class PlanActivity extends AppCompatActivity {
             long d2 = System.currentTimeMillis();
             long d3 = plan.getDatumKraja().getTime();
 
-            Toast.makeText(context, "" + new Date(d1) + "\n" + new Date(d2) + "\n" + new Date(d3), Toast.LENGTH_LONG).show();
-
             double prosek = brojTransakcija / ((double) d2 - d1);
 
             ocekivanaUsteda = (int) ((d3 - d2) * prosek * fiksno);

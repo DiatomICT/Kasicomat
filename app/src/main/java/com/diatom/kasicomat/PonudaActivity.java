@@ -18,7 +18,7 @@ public class PonudaActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         PonudaDTO ponuda = extras.getParcelable("ponuda");
 
-        int sakupljenIznos = extras.getInt("sakupljenIznos");
+        int sakupljenIznos = ponuda.getSakupljenIznos();
         int iznosKredita = ponuda.getCena() - sakupljenIznos;
 
         ((ImageView) findViewById(R.id.imageDetalji)).setImageDrawable(getResources().getDrawable(ponuda.getSlikaId()));

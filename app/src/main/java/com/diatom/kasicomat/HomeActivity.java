@@ -173,7 +173,7 @@ public class HomeActivity extends AppCompatActivity {
                 });
                 holder.mImageRetailer.setImageDrawable(getResources().getDrawable(ponudaDTO.getSlikaId()));
                 holder.mTextPonudaNaziv.setText(ponudaDTO.getNaziv());
-                holder.mTextPonudaCena.setText(String.valueOf(ponudaDTO.getCena()));
+                holder.mTextPonudaCena.setText(String.valueOf(ponudaDTO.getSakupljenIznos()));
             }
         }
 
