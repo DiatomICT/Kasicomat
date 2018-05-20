@@ -19,9 +19,14 @@ import com.diatom.kasicomat.db.entities.Fiksno;
 import com.diatom.kasicomat.db.entities.Plan;
 import com.diatom.kasicomat.db.entities.Transakcija;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PlanActivity extends AppCompatActivity {
 
@@ -38,9 +43,7 @@ public class PlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
 
-
-
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = findViewById(R.id.graph);
 
         try {
             List<Transakcija> transakcije = new GetTransakcijaAsyncTask(PlanActivity.this).execute().get();
@@ -69,6 +72,49 @@ public class PlanActivity extends AppCompatActivity {
             long DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
             long inX = ukupnoDanaDoKraja + d1;
             ((TextView) findViewById(R.id.textOcekivaniDatumZavrsetkaValue)).setText(new Date(inX).toString());
+
+
+            Map<String, Integer> mapa = new HashMap<>();
+            for (Transakcija t : transakcije) {
+                if (mapa.containsKey(t.getDatum().toString())) {
+                    mapa.put(t.getDatum().toString(), mapa.get(t.getDatum().toString()) + 10);
+                } else {
+                    mapa.put(t.getDatum().toString(), 10);
+                }
+            }
+
+            DataPoint[] dataPoints = new DataPoint[mapa.size()];
+            int i = 0;
+            for (Map.Entry<String, Integer> entry : mapa.entrySet()) {
+                dataPoints[i++] = new DataPoint(Date.valueOf(entry.getKey()), entry.getValue());
+            }
+
+            for (int j = 0; j < dataPoints.length - 1; j++) {
+                for (int k = j + 1; k < dataPoints.length; k++) {
+                    if (dataPoints[j].getX() > dataPoints[k].getX()) {
+                        DataPoint tmp = dataPoints[j];
+                        dataPoints[j] = dataPoints[k];
+                        dataPoints[k] = tmp;
+                    }
+                }
+            }
+
+            BarGraphSeries<DataPoint> series = new BarGraphSeries<>(dataPoints);
+
+            graph.addSeries(series);
+
+            // set date label formatter
+            graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(PlanActivity.this));
+            graph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
+
+            // set manual x bounds to have nice steps
+            graph.getViewport().setMinX(d1);
+            graph.getViewport().setMaxX(d3);
+            graph.getViewport().setXAxisBoundsManual(true);
+
+            // as we use dates as labels, the human rounding to nice readable numbers
+            // is not necessary
+            graph.getGridLabelRenderer().setHumanRounding(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -133,7 +179,9 @@ public class PlanActivity extends AppCompatActivity {
                 if (rezimId == 1) {
                     startActivity(new Intent(PlanActivity.this, NivoiStednjeKusurActivity.class));
                 } else {
-                    startActivity(new Intent(PlanActivity.this, NivoiStednjeFiksnoActivity.class));
+                    Intent intent = new Intent(PlanActivity.this, NivoiStednjeFiksnoActivity.class);
+                    intent.putExtra("planId", 1L);
+                    startActivity(intent);
                 }
             }
 
