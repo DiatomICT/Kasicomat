@@ -23,10 +23,7 @@ public class PlanActivity extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
-        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
-
-        button = (Button) findViewById(R.id.btnIzmeniPlan);
+        button = (Button) findViewById(R.id.btnVidiPredlog);
 
         button.setOnClickListener(new OnClickListener() {
 
