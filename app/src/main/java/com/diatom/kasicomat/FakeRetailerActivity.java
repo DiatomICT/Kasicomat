@@ -55,7 +55,7 @@ public class FakeRetailerActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    mRangeCena.setTickEnd(5);
+                    mRangeCena.setTickEnd(80000);
                     mRangeCena.setRangePinsByIndices(0, 5);
                 } else {
                     mRangeCena.setTickEnd(500);
@@ -174,7 +174,7 @@ public class FakeRetailerActivity extends AppCompatActivity {
                     intent.putExtra("nazivProizvoda", retailerPregledDTO.getProizvod());
                     intent.putExtra("procenatSakupljenog", retailerPregledDTO.getProcenatSkupljenog());
 
-                    new InsertPonudaAsyncTask(FakeRetailerActivity.this).execute(new Ponuda("Gigatron", "DIATOM"));
+                    new InsertPonudaAsyncTask(FakeRetailerActivity.this).execute(new Ponuda("win-win", "DIATOM"));
 
                     startActivity(intent);
                 }
