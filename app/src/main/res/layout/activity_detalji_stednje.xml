@@ -194,6 +194,6 @@
         android:layout_marginBottom="25dp"
         android:layout_toEndOf="@+id/textModel"
         android:visibility="invisible"
-        app:srcCompat="@mipmap/bid_box" />
+        app:srcCompat="@mipmap/biddy_bank" />
 
 </RelativeLayout>
