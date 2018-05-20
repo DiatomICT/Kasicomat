@@ -8,15 +8,17 @@ public class PonudaDTO implements Parcelable {
     @DrawableRes private int slikaId;
     private String naziv;
     private int cena;
+    private int sakupljenIznos;
 
     public PonudaDTO() {
 
     }
 
-    public PonudaDTO(int slikaId, String naziv, int cena) {
+    public PonudaDTO(int slikaId, String naziv, int cena, int sakupljenIznos) {
         this.slikaId = slikaId;
         this.naziv = naziv;
         this.cena = cena;
+        this.sakupljenIznos = sakupljenIznos;
     }
 
     public int getSlikaId() {
@@ -43,6 +45,14 @@ public class PonudaDTO implements Parcelable {
         this.cena = cena;
     }
 
+    public int getSakupljenIznos() {
+        return sakupljenIznos;
+    }
+
+    public void setSakupljenIznos(int sakupljenIznos) {
+        this.sakupljenIznos = sakupljenIznos;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -53,6 +63,7 @@ public class PonudaDTO implements Parcelable {
         dest.writeInt(slikaId);
         dest.writeString(naziv);
         dest.writeInt(cena);
+        dest.writeInt(sakupljenIznos);
     }
 
     public static final Parcelable.Creator<PonudaDTO> CREATOR = new Parcelable.Creator<PonudaDTO>() {
@@ -71,5 +82,6 @@ public class PonudaDTO implements Parcelable {
         slikaId = in.readInt();
         naziv = in.readString();
         cena = in.readInt();
+        sakupljenIznos = in.readInt();
     }
 }

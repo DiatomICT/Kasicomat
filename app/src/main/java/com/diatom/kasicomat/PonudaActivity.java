@@ -18,8 +18,14 @@ public class PonudaActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         PonudaDTO ponuda = extras.getParcelable("ponuda");
 
+        int sakupljenIznos = extras.getInt("sakupljenIznos");
+        int iznosKredita = ponuda.getCena() - sakupljenIznos;
+
         ((ImageView) findViewById(R.id.imageDetalji)).setImageDrawable(getResources().getDrawable(ponuda.getSlikaId()));
         ((TextView) findViewById(R.id.textDetaljiNaziv)).setText(ponuda.getNaziv());
         ((TextView) findViewById(R.id.textDetaljiCena)).setText(String.valueOf(ponuda.getCena()));
+
+        ((TextView) findViewById(R.id.textSakupljenIznosValue)).setText(String.valueOf(sakupljenIznos));
+        ((TextView) findViewById(R.id.textIznosKreditaValue)).setText(String.valueOf(iznosKredita));
     }
 }

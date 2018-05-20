@@ -75,7 +75,7 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 plan.setKategorijaId((int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1);
 
                 try {
-                    long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get();
+                    long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get().get(0);
                     intent.putExtra("planId", planId);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

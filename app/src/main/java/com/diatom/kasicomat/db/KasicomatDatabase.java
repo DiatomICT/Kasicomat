@@ -9,12 +9,14 @@ import android.support.annotation.NonNull;
 
 import com.diatom.kasicomat.db.dao.FiksnoDao;
 import com.diatom.kasicomat.db.dao.KategorijaDao;
+import com.diatom.kasicomat.db.dao.KorisnikPlanDao;
 import com.diatom.kasicomat.db.dao.KusurDao;
 import com.diatom.kasicomat.db.dao.PeriodStednjeDao;
 import com.diatom.kasicomat.db.dao.PlanDao;
 import com.diatom.kasicomat.db.dao.RezimDao;
 import com.diatom.kasicomat.db.entities.Fiksno;
 import com.diatom.kasicomat.db.entities.Kategorija;
+import com.diatom.kasicomat.db.entities.KorisnikPlan;
 import com.diatom.kasicomat.db.entities.Kusur;
 import com.diatom.kasicomat.db.entities.PeriodStednje;
 import com.diatom.kasicomat.db.entities.Plan;
@@ -22,7 +24,7 @@ import com.diatom.kasicomat.db.entities.Rezim;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {Plan.class, Rezim.class, PeriodStednje.class, Kusur.class, Fiksno.class, Kategorija.class}, version = 1)
+@Database(entities = {Plan.class, Rezim.class, PeriodStednje.class, Kusur.class, Fiksno.class, Kategorija.class, KorisnikPlan.class}, version = 1)
 public abstract class KasicomatDatabase extends RoomDatabase {
     private static KasicomatDatabase instance;
 
@@ -64,4 +66,6 @@ public abstract class KasicomatDatabase extends RoomDatabase {
     public abstract PlanDao planDao();
 
     public abstract KategorijaDao kategorijaDao();
+
+    public abstract KorisnikPlanDao korisnikPlanDao();
 }

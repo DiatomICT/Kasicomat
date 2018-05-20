@@ -11,11 +11,21 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.appyvet.materialrangebar.RangeBar;
+import com.diatom.kasicomat.async.GetKorisnikPlanAsyncTask;
+import com.diatom.kasicomat.async.InsertKorisnikPlanAsyncTask;
+import com.diatom.kasicomat.db.entities.KorisnikPlan;
 import com.diatom.kasicomat.dto.PonudaDTO;
 import com.diatom.kasicomat.dto.RetailerPregledDTO;
+import com.diatom.kasicomat.util.StringUtils;
+
+import java.util.List;
 
 public class FakeRetailerActivity extends AppCompatActivity {
 
@@ -23,10 +33,36 @@ public class FakeRetailerActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private RangeBar mRangeCena;
+    private RangeBar mRangeProcenat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer);
+
+        mRangeCena = findViewById(R.id.rangeCena);
+        mRangeProcenat = findViewById(R.id.rangeProcenat);
+
+        // dohvati se plan sa najvise ustedjenog novca po kategoriji
+        Spinner spinnerKategorija = findViewById(R.id.spinnerKategorijaRetailer);
+        spinnerKategorija.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    mRangeCena.setTickEnd(5);
+                    mRangeCena.setRangePinsByIndices(0, 5);
+                } else {
+                    mRangeCena.setTickEnd(500);
+                    mRangeCena.setRangePinsByIndices(0, 500);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         mRecyclerView = findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -50,11 +86,23 @@ public class FakeRetailerActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new FakeRetailerActivity.MyAdapter(new RetailerPregledDTO[]{
-                new RetailerPregledDTO("user1", "sat1", 79),
-                new RetailerPregledDTO("user2", "sat2", 51),
-                new RetailerPregledDTO("user3", "sat3", 88)
-        });
+        List<KorisnikPlan> fakeData = null;
+        try {
+            fakeData = new GetKorisnikPlanAsyncTask(FakeRetailerActivity.this).execute().get();
+            Toast.makeText(this, StringUtils.mkString(fakeData), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        RetailerPregledDTO[] prikazData;
+        if (fakeData == null || fakeData.size() == 0) {
+            prikazData = new RetailerPregledDTO[]{new RetailerPregledDTO("JEDAN", "JEDAN", 30)};
+        } else {
+            prikazData = new RetailerPregledDTO[fakeData.size()];
+            for (int i = 0; i < fakeData.size(); i++) {
+                prikazData[i] = new RetailerPregledDTO(""+fakeData.get(i).getKorisnikId(), String.valueOf(fakeData.get(i).getPlanId()), (int) (Math.random() * 100));
+            }
+        }
+        mAdapter = new FakeRetailerActivity.MyAdapter(prikazData);
         mRecyclerView.setAdapter(mAdapter);
     }
 

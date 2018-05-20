@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,13 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.diatom.kasicomat.async.GetFiksnoByPlanIdAsyncTask;
-import com.diatom.kasicomat.async.GetKusurByPlanIdAsyncTask;
 import com.diatom.kasicomat.async.GetPlanAsyncTask;
-import com.diatom.kasicomat.db.entities.Fiksno;
-import com.diatom.kasicomat.db.entities.Kusur;
+import com.diatom.kasicomat.async.InsertKorisnikPlanAsyncTask;
+import com.diatom.kasicomat.async.InsertPlanAsyncTask;
 import com.diatom.kasicomat.db.entities.Plan;
 import com.diatom.kasicomat.dto.PonudaDTO;
+import com.diatom.kasicomat.util.DummyGenerator;
+import com.diatom.kasicomat.util.StringUtils;
 
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+//    private Plan mPlan;
 
 
     @Override
@@ -46,61 +46,42 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        mRecyclerView = findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new MyAdapter(this, new PonudaDTO[]{
-                new PonudaDTO(R.drawable.logo_emmi, "Sat", 2000),
-                new PonudaDTO(R.drawable.logo_gigatron, "Bicikl", 19000),
-                new PonudaDTO(R.drawable.logo_winwin, "TV", 78000)
-        });
-        mRecyclerView.setAdapter(mAdapter);
-
         try {
             List<Plan> plans = new GetPlanAsyncTask(HomeActivity.this).execute().get();
-            Plan plan = plans.get(0);
+            Plan mPlan = plans.get(0);
 
-            ((TextView)findViewById(R.id.textNazivValue)).setText(plan.getBrend() + " " + plan.getModel());
-            ((TextView)findViewById(R.id.textCenaValue)).setText(String.valueOf(plan.getCena()));
-            ((TextView)findViewById(R.id.textSakupljenoValue)).setText(String.valueOf(plan.getSakupljeno())); // TODO dodaj ovo kao polje u bazu
+            ((TextView)findViewById(R.id.textNazivValue)).setText(mPlan.getBrend() + " " + mPlan.getModel());
+            ((TextView)findViewById(R.id.textCenaValue)).setText(String.valueOf(mPlan.getCena()));
+            ((TextView)findViewById(R.id.textSakupljenoValue)).setText(String.valueOf(mPlan.getSakupljeno())); // TODO dodaj ovo kao polje u bazu
 
-            // DEBUG sta se nalazi u bazi; dal se lepo cita itd
-//            StringBuffer sb = new StringBuffer();
-//            if (plan.getRezimId() == 1) {
-//                // kusur
-//                List<Kusur> kusurs = new GetKusurByPlanIdAsyncTask(HomeActivity.this).execute(plan.getId()).get();
-//
-//                for (Kusur k : kusurs) {
-//                    sb.append(k); sb.append("\n");
+            mRecyclerView = findViewById(R.id.my_recycler_view);
+            mRecyclerView.setHasFixedSize(true);
+//            mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//                @Override
+//                public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+//                    return false;
 //                }
-//            } else {
-//                // fiksno
-//                List<Fiksno> fiksnos = new GetFiksnoByPlanIdAsyncTask(HomeActivity.this).execute(plan.getId()).get();
 //
-//                for (Fiksno f : fiksnos) {
-//                    sb.append(f); sb.append("\n");
+//                @Override
+//                public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+//
 //                }
-//            }
-//            Toast.makeText(HomeActivity.this.getApplicationContext(), sb.toString(), Toast.LENGTH_LONG).show();
+//
+//                @Override
+//                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+//
+//                }
+//            });
+
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            mAdapter = new MyAdapter(this, new PonudaDTO[]{
+                    new PonudaDTO(R.drawable.logo_emmi, "Sat", 2000, mPlan.getSakupljeno()),
+                    new PonudaDTO(R.drawable.logo_gigatron, "Bicikl", 19000, mPlan.getSakupljeno()),
+                    new PonudaDTO(R.drawable.logo_winwin, "TV", 78000, mPlan.getSakupljeno())
+            });
+            mRecyclerView.setAdapter(mAdapter);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,6 +90,15 @@ public class HomeActivity extends AppCompatActivity {
         btnFakeRetailer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // dodati lazne podatke
+                try {
+                    List<Long> ids = new InsertPlanAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiDummyPlanove(5)).get();
+
+                    Toast.makeText(HomeActivity.this, StringUtils.mkString(ids), Toast.LENGTH_LONG).show();
+                    new InsertKorisnikPlanAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiKorisnikPlanove(ids));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 startActivity(new Intent(HomeActivity.this.getApplicationContext(), FakeRetailerActivity.class));
             }
         });
@@ -147,13 +137,6 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ponuda_row_item, parent, false);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
             ViewHolder vh = new ViewHolder(view);
 
             return vh;
