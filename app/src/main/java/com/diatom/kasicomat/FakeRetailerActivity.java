@@ -25,6 +25,8 @@ import com.diatom.kasicomat.dto.PonudaDTO;
 import com.diatom.kasicomat.dto.RetailerPregledDTO;
 import com.diatom.kasicomat.util.StringUtils;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class FakeRetailerActivity extends AppCompatActivity {
@@ -99,7 +101,10 @@ public class FakeRetailerActivity extends AppCompatActivity {
         } else {
             prikazData = new RetailerPregledDTO[fakeData.size()];
             for (int i = 0; i < fakeData.size(); i++) {
-                prikazData[i] = new RetailerPregledDTO(""+fakeData.get(i).getKorisnikId(), String.valueOf(fakeData.get(i).getPlanId()), (int) (Math.random() * 100));
+                prikazData[i] = new RetailerPregledDTO(
+                        fakeData.get(i).getKorisnik().getIme(),
+                        fakeData.get(i).getPlan().get(0).getBrend() + " " + fakeData.get(i).getPlan().get(0).getModel(),
+                        fakeData.get(i).getPlan().get(0).getSakupljeno());
             }
         }
         mAdapter = new FakeRetailerActivity.MyAdapter(prikazData);
@@ -112,12 +117,14 @@ public class FakeRetailerActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             public TextView mTextKorisnik;
+            public TextView mTextProizvod;
             public TextView mTextProcenatSakupljenog;
 
             public ViewHolder(View v) {
                 super(v);
                 itemView.setOnClickListener(this);
                 mTextKorisnik = (TextView) v.findViewById(R.id.textKorisnik);
+                mTextProizvod = (TextView) v.findViewById(R.id.textNazivPredmeta);
                 mTextProcenatSakupljenog = (TextView) v.findViewById(R.id.textProcenatSakupljenogRetailer);
             }
 
@@ -152,6 +159,7 @@ public class FakeRetailerActivity extends AppCompatActivity {
             final RetailerPregledDTO retailerPregledDTO = mDataset[position];
 
             holder.mTextKorisnik.setText(retailerPregledDTO.getKorisnik());
+            holder.mTextProizvod.setText(retailerPregledDTO.getProizvod());
             holder.mTextProcenatSakupljenog.setText(String.valueOf(retailerPregledDTO.getProcenatSkupljenog()));
         }
 

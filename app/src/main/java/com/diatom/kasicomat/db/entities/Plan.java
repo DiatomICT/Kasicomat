@@ -35,11 +35,14 @@ public class Plan {
     @ColumnInfo(name = "kategorija_id")
     private int kategorijaId;
 
+    @ColumnInfo(name = "korisnik_id")
+    private long korisnikId;
+
     public Plan() {
 
     }
 
-    public Plan(String brend, String model, int cena, int sakupljeno, int rezimId, int periodStednjeId, int kategorijaId) {
+    public Plan(String brend, String model, int cena, int sakupljeno, int rezimId, int periodStednjeId, int kategorijaId, long korisnikId) {
         this.brend = brend;
         this.model = model;
         this.cena = cena;
@@ -47,6 +50,7 @@ public class Plan {
         this.rezimId = rezimId;
         this.periodStednjeId = periodStednjeId;
         this.kategorijaId = kategorijaId;
+        this.korisnikId = korisnikId;
     }
 
     public long getId() {
@@ -111,5 +115,13 @@ public class Plan {
 
     public void setKategorijaId(int kategorijaId) {
         this.kategorijaId = kategorijaId;
+    }
+
+    public long getKorisnikId() {
+        return korisnikId;
+    }
+
+    public void setKorisnikId(long korisnikId) {
+        this.korisnikId = korisnikId;
     }
 }

@@ -18,7 +18,7 @@ public class InsertKorisnikPlanAsyncTask extends AsyncTask<KorisnikPlan, Void, V
 
     @Override
     protected Void doInBackground(KorisnikPlan... korisnikPlans) {
-        KasicomatDatabase.getInstance(weakActivity.get().getApplicationContext()).korisnikPlanDao().insert(korisnikPlans);
+//        KasicomatDatabase.getInstance(weakActivity.get().getApplicationContext()).korisnikPlanDao().insert(korisnikPlans);
         return null;
     }
 }

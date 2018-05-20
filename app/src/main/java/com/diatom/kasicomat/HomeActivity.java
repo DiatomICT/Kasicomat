@@ -13,15 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.diatom.kasicomat.async.GetPlanAsyncTask;
+import com.diatom.kasicomat.async.InsertKorisnikAsyncTask;
 import com.diatom.kasicomat.async.InsertKorisnikPlanAsyncTask;
 import com.diatom.kasicomat.async.InsertPlanAsyncTask;
+import com.diatom.kasicomat.db.entities.KorisnikPlan;
 import com.diatom.kasicomat.db.entities.Plan;
 import com.diatom.kasicomat.dto.PonudaDTO;
 import com.diatom.kasicomat.util.DummyGenerator;
-import com.diatom.kasicomat.util.StringUtils;
 
 import java.util.List;
 
@@ -92,10 +92,10 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // dodati lazne podatke
                 try {
-                    List<Long> ids = new InsertPlanAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiDummyPlanove(5)).get();
+                    List<Long> korisnici = new InsertKorisnikAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiDummyKorisnike(5)).get();
+                    List<Long> planovi = new InsertPlanAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiDummyPlanove(5, korisnici)).get();
 
-                    Toast.makeText(HomeActivity.this, StringUtils.mkString(ids), Toast.LENGTH_LONG).show();
-                    new InsertKorisnikPlanAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiKorisnikPlanove(ids));
+//                    new InsertKorisnikPlanAsyncTask(HomeActivity.this).execute(DummyGenerator.generisiKorisnikPlanove(ids));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

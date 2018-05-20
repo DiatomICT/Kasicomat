@@ -1,47 +1,33 @@
 package com.diatom.kasicomat.db.entities;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.Relation;
 
-@Entity(tableName = "tbl_korisnik_plan")
+import java.util.List;
+
 public class KorisnikPlan {
-    @PrimaryKey
-    @ColumnInfo(name = "korisnik_id")
-    private long korisnikId;
+    @Embedded
+    public Korisnik korisnik;
 
-    @ColumnInfo(name = "plan_id")
-    private long planId;
+    @Relation(parentColumn = "id", entityColumn = "korisnik_id")
+    public List<Plan> plan;
 
-
-
-    public KorisnikPlan() {
-
+    public Korisnik getKorisnik() {
+        return korisnik;
     }
 
-    public KorisnikPlan(long korisnikId, long planId) {
-        this.korisnikId = korisnikId;
-        this.planId = planId;
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
     }
 
-    public long getPlanId() {
-        return planId;
+    public List<Plan> getPlan() {
+        return plan;
     }
 
-    public void setPlanId(long planId) {
-        this.planId = planId;
-    }
-
-    public long getKorisnikId() {
-        return korisnikId;
-    }
-
-    public void setKorisnikId(long korisnikId) {
-        this.korisnikId = korisnikId;
-    }
-
-    @Override
-    public String toString() {
-        return "KorisnikPlan(" + korisnikId + "," + planId + ")";
+    public void setPlan(List<Plan> plan) {
+        this.plan = plan;
     }
 }

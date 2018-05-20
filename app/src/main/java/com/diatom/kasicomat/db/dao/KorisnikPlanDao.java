@@ -10,12 +10,9 @@ import java.util.List;
 
 @Dao
 public interface KorisnikPlanDao {
-    @Insert
-    void insert(KorisnikPlan korisnikPlan);
+//    @Query("SELECT tbl_korisnik.*, tbl_plan.* FROM tbl_korisnik INNER JOIN tbl_plan ON tbl_korisnik.plan_id=tbl_plan.id")
+//    List<KorisnikPlan> getAllKorisnikPlans();
 
-    @Insert
-    void insert(KorisnikPlan... korisnikPlans);
-
-    @Query("SELECT * FROM tbl_korisnik_plan")
+    @Query("SELECT * FROM tbl_korisnik")
     List<KorisnikPlan> getAllKorisnikPlans();
 }
