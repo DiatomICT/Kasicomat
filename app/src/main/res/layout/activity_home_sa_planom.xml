@@ -108,6 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/btnAnalizaPlana"
         android:layout_centerVertical="true"
         android:orientation="vertical">
