@@ -117,6 +117,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/textRsdIznosKredita"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textIznosKredita"
@@ -130,8 +131,19 @@
         android:layout_width="167dp"
         android:layout_height="92dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_alignStart="@+id/imageDetalji"
+        android:layout_marginBottom="30dp"
         android:src="@drawable/societe_generale" />
+
+    <Button
+        android:id="@+id/btnUzmiKredit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textSakupljenIznosValue"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/button"
+        android:padding="5dp"
+        android:text="Uzmi kredit" />
 
 </RelativeLayout>
