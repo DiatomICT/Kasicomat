@@ -16,6 +16,7 @@ import com.diatom.kasicomat.db.dao.PeriodStednjeDao;
 import com.diatom.kasicomat.db.dao.PlanDao;
 import com.diatom.kasicomat.db.dao.PonudaDao;
 import com.diatom.kasicomat.db.dao.RezimDao;
+import com.diatom.kasicomat.db.dao.TransakcijaDao;
 import com.diatom.kasicomat.db.entities.Fiksno;
 import com.diatom.kasicomat.db.entities.Kategorija;
 import com.diatom.kasicomat.db.entities.Korisnik;
@@ -25,10 +26,11 @@ import com.diatom.kasicomat.db.entities.PeriodStednje;
 import com.diatom.kasicomat.db.entities.Plan;
 import com.diatom.kasicomat.db.entities.Ponuda;
 import com.diatom.kasicomat.db.entities.Rezim;
+import com.diatom.kasicomat.db.entities.Transakcija;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {Plan.class, Rezim.class, PeriodStednje.class, Kusur.class, Fiksno.class, Kategorija.class, Korisnik.class, Ponuda.class}, version = 1)
+@Database(entities = {Plan.class, Rezim.class, PeriodStednje.class, Kusur.class, Fiksno.class, Kategorija.class, Korisnik.class, Ponuda.class, Transakcija.class}, version = 1)
 public abstract class KasicomatDatabase extends RoomDatabase {
     private static KasicomatDatabase instance;
 
@@ -48,6 +50,7 @@ public abstract class KasicomatDatabase extends RoomDatabase {
                                             getInstance(context).periodStednjeDao().insert(PeriodStednje.prepopulate(context));
                                             getInstance(context).kategorijaDao().insert(Kategorija.prepopulate(context));
                                             getInstance(context).korisnikDao().insert(Korisnik.prepopulate(context));
+                                            getInstance(context).transakcijaDao().insert(Transakcija.prepopulate());
                                         }
                                     });
                                 }
@@ -77,4 +80,6 @@ public abstract class KasicomatDatabase extends RoomDatabase {
     public abstract KorisnikPlanDao korisnikPlanDao();
 
     public abstract PonudaDao ponudaDao();
+
+    public abstract TransakcijaDao transakcijaDao();
 }

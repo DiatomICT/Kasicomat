@@ -4,7 +4,13 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 
+import com.diatom.kasicomat.db.Converters;
+
+import java.sql.Date;
+
+@TypeConverters(Converters.class)
 @Entity(tableName = "tbl_plan", foreignKeys = {
         @ForeignKey(entity = Rezim.class, parentColumns = "id", childColumns = "rezim_id"),
         @ForeignKey(entity = PeriodStednje.class, parentColumns = "id", childColumns = "period_stednje_id"),
@@ -37,6 +43,12 @@ public class Plan {
 
     @ColumnInfo(name = "korisnik_id")
     private long korisnikId;
+
+    @ColumnInfo(name = "datum_pocetka")
+    private Date datumPocetka;
+
+    @ColumnInfo(name = "datum_kraja")
+    private Date datumKraja;
 
     public Plan() {
 
@@ -125,6 +137,22 @@ public class Plan {
         this.korisnikId = korisnikId;
     }
 
+    public Date getDatumPocetka() {
+        return datumPocetka;
+    }
+
+    public void setDatumPocetka(Date datumPocetka) {
+        this.datumPocetka = datumPocetka;
+    }
+
+    public Date getDatumKraja() {
+        return datumKraja;
+    }
+
+    public void setDatumKraja(Date datumKraja) {
+        this.datumKraja = datumKraja;
+    }
+
     @Override
     public String toString() {
         return "Plan("
@@ -135,6 +163,8 @@ public class Plan {
                 + rezimId + ","
                 + periodStednjeId + ","
                 + kategorijaId + ","
-                + korisnikId  + ")";
+                + korisnikId + ","
+                + datumPocetka.toString() + ","
+                + datumKraja.toString()  + ")";
     }
 }

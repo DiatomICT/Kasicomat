@@ -30,6 +30,7 @@ import com.diatom.kasicomat.async.InsertPlanAsyncTask;
 import com.diatom.kasicomat.db.entities.Plan;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Date;
 import java.util.concurrent.ExecutionException;
 
 public class DetaljiStednjeActivity extends AppCompatActivity {
@@ -72,8 +73,11 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 plan.setCena(Integer.parseInt(((EditText)findViewById(R.id.editCena)).getText().toString()));
                 plan.setRezimId(isKusur ? 1 : 2);
                 plan.setPeriodStednjeId((int) ((Spinner)findViewById(R.id.spinnerPeriodStednje)).getSelectedItemId() + 1);
-                plan.setKategorijaId((int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1);
+                int kategorijaId = (int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1;
+                plan.setKategorijaId(kategorijaId);
                 plan.setKorisnikId(1);
+                plan.setDatumPocetka(new Date(System.currentTimeMillis() - 4 * 30 * 24 * 60 * 60 * 1000));
+                plan.setDatumKraja(new Date(System.currentTimeMillis() + (2 + (kategorijaId - 2) * 3) * 30 * 24 * 60 * 60 * 1000));
 
                 try {
                     long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get().get(0);
