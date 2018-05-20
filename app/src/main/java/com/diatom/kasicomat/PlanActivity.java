@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.diatom.kasicomat.async.GetFiksnoByPlanIdAsyncTask;
@@ -27,52 +28,73 @@ public class PlanActivity extends AppCompatActivity {
     final Context context = this;
     private Button btnVidiPredlog;
     private Button btnIzmeniPlan;
+    private long sakupljeno;
+    private long cilj;
+    private long ocekivanaUsteda;
+    private long boljeFiksno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
 
+
+
         GraphView graph = (GraphView) findViewById(R.id.graph);
+
+        try {
+            List<Transakcija> transakcije = new GetTransakcijaAsyncTask(PlanActivity.this).execute().get();
+            int brojTransakcija = transakcije.size();
+
+            int fiksno = new GetFiksnoByPlanIdAsyncTask(PlanActivity.this).execute(1L).get().get(0).getKolicina();
+
+            Plan plan = new GetPlanAsyncTask(PlanActivity.this).execute().get().get(0);
+
+            long d1 = plan.getDatumPocetka().getTime();
+            long d2 = System.currentTimeMillis();
+            long d3 = plan.getDatumKraja().getTime();
+
+            Toast.makeText(context, "" + new Date(d1) + "\n" + new Date(d2) + "\n" + new Date(d3), Toast.LENGTH_LONG).show();
+
+            double prosek = brojTransakcija / ((double) d2 - d1);
+
+            ocekivanaUsteda = (int) ((d3 - d2) * prosek * fiksno);
+            cilj = plan.getCena();
+
+            sakupljeno = brojTransakcija * fiksno;
+            boljeFiksno = (int) ((cilj - sakupljeno) / ((d3 - d2) * prosek)) + 1;
+
+            long ukupnoDanaDoKraja = (long) ((d2 - d1) * cilj) / sakupljeno;
+
+            long DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
+            long inX = ukupnoDanaDoKraja * DAY_IN_MILLIS + d1;
+            ((TextView) findViewById(R.id.textOcekivaniDatumZavrsetkaValue)).setText(new Date(inX).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
         btnVidiPredlog = (Button) findViewById(R.id.btnVidiPredlog);
         btnVidiPredlog.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 StringBuffer sb = new StringBuffer();
-                try {
-                    List<Transakcija> transakcije = new GetTransakcijaAsyncTask(PlanActivity.this).execute().get();
-                    int brojTransakcija = transakcije.size();
 
-                    int fiksno = new GetFiksnoByPlanIdAsyncTask(PlanActivity.this).execute(1L).get().get(0).getKolicina();
 
-                    Plan plan = new GetPlanAsyncTask(PlanActivity.this).execute().get().get(0);
-
-                    long d1 = plan.getDatumPocetka().getTime();
-                    long d2 = System.currentTimeMillis();
-                    long d3 = plan.getDatumKraja().getTime();
-
-                    double prosek = brojTransakcija / ((double) d2 - d1);
-
-                    int ocekivanaUsteda = (int) ((d3 - d2) * prosek * fiksno);
-                    int cilj = plan.getCena();
-
-                    int sakupljeno = brojTransakcija * fiksno;
-                    int boljeFiksno = (int) ((cilj - sakupljeno) / ((d3 - d2) * prosek)) + 1;
-
-                    String poruka = "";
-                    poruka += "D1 :" + new Date(d1) + "\n";
-                    poruka += "D2 :" + new Date(d2) + "\n";
-                    poruka += "D3 :" + new Date(d3) + "\n";
-                    poruka += "Broj transakcija :" + brojTransakcija + "\n";
-                    poruka += "Broj transakcija po danu :" + prosek + "\n";
-                    poruka += "Fiksno :" + fiksno + "\n";
-                    poruka += "Usteda :" + sakupljeno + "\n";
-                    poruka += "Cilj :" + cilj + "\n";
-                    poruka += "Ocekivana usteda :" + ocekivanaUsteda + "\n";
-                    poruka += "Predlog :" + boljeFiksno + "\n";
-
-                    Toast.makeText(context, poruka, Toast.LENGTH_LONG).show();
+//                    String poruka = "";
+//                    poruka += "D1 :" + new Date(d1) + "\n";
+//                    poruka += "D2 :" + new Date(d2) + "\n";
+//                    poruka += "D3 :" + new Date(d3) + "\n";
+//                    poruka += "Broj transakcija :" + brojTransakcija + "\n";
+//                    poruka += "Broj transakcija po danu :" + prosek + "\n";
+//                    poruka += "Fiksno :" + fiksno + "\n";
+//                    poruka += "Usteda :" + sakupljeno + "\n";
+//                    poruka += "Cilj :" + cilj + "\n";
+//                    poruka += "Ocekivana usteda :" + ocekivanaUsteda + "\n";
+//                    poruka += "Predlog :" + boljeFiksno + "\n";
+//
+//                    Toast.makeText(context, poruka, Toast.LENGTH_LONG).show();
                     sb.append("Vasa dosadasnja usteda je: ");
                     sb.append(sakupljeno); sb.append(" RSD.\n");
                     if (cilj - sakupljeno > ocekivanaUsteda) {
@@ -84,11 +106,7 @@ public class PlanActivity extends AppCompatActivity {
                     } else {
                         sb.append("Na sjajnom ste putu!");
                     }
-                } catch (Exception e) {
-                    sb.append("Doslo je do greske");
-                    sb.append(e.getMessage());
 
-                }
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         context);
                 alertDialogBuilder.setTitle("Predlog izmene plana za štednju");

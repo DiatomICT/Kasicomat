@@ -76,8 +76,12 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 int kategorijaId = (int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1;
                 plan.setKategorijaId(kategorijaId);
                 plan.setKorisnikId(1);
-                plan.setDatumPocetka(new Date(System.currentTimeMillis() - 4 * 30 * 24 * 60 * 60 * 1000));
-                plan.setDatumKraja(new Date(System.currentTimeMillis() + (2 + (kategorijaId - 2) * 3) * 30 * 24 * 60 * 60 * 1000));
+                long DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
+                long current = System.currentTimeMillis();
+                long ago4 = current - DAY_IN_MILLIS * 4 * 30;
+                long in2 = current + DAY_IN_MILLIS * 2 * 30;
+                plan.setDatumPocetka(new Date(ago4));
+                plan.setDatumKraja(new Date(in2));
 
                 try {
                     long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get().get(0);
