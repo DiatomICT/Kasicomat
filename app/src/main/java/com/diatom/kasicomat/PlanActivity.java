@@ -19,6 +19,7 @@ import com.diatom.kasicomat.db.entities.Fiksno;
 import com.diatom.kasicomat.db.entities.Plan;
 import com.diatom.kasicomat.db.entities.Transakcija;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
@@ -43,7 +44,10 @@ public class PlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
 
-        GraphView graph = findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
+        glr.setPadding(32);
 
         try {
             List<Transakcija> transakcije = new GetTransakcijaAsyncTask(PlanActivity.this).execute().get();
