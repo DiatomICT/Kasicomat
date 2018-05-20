@@ -1,6 +1,7 @@
 package com.diatom.kasicomat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,7 +15,8 @@ import com.jjoe64.graphview.GraphView;
 public class PlanActivity extends AppCompatActivity {
 
     final Context context = this;
-    private Button button;
+    private Button btnVidiPredlog;
+    private Button btnIzmeniPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +25,8 @@ public class PlanActivity extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
-        button = (Button) findViewById(R.id.btnVidiPredlog);
-
-        button.setOnClickListener(new OnClickListener() {
-
+        btnVidiPredlog = (Button) findViewById(R.id.btnVidiPredlog);
+        btnVidiPredlog.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
 
@@ -45,6 +45,21 @@ public class PlanActivity extends AppCompatActivity {
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
+        });
+
+        btnIzmeniPlan = (Button) findViewById(R.id.btnIzmeniPlan);
+        btnIzmeniPlan.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                int rezimId = getIntent().getIntExtra("rezimId", 1);
+                if (rezimId == 1) {
+                    startActivity(new Intent(PlanActivity.this, NivoiStednjeKusurActivity.class));
+                } else {
+                    startActivity(new Intent(PlanActivity.this, NivoiStednjeFiksnoActivity.class));
+                }
+            }
+
         });
     }
 }
