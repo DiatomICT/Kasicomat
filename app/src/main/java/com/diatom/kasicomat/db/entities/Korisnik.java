@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Context;
 
 @Entity(tableName = "tbl_korisnik")
 public class Korisnik {
@@ -35,5 +36,16 @@ public class Korisnik {
 
     public void setIme(String ime) {
         this.ime = ime;
+    }
+
+    public static Korisnik[] prepopulate(Context context) {
+        return new Korisnik[]{
+                new Korisnik("DIATOM")
+        };
+    }
+
+    @Override
+    public String toString() {
+        return "Korisnik(" + ime + ")";
     }
 }

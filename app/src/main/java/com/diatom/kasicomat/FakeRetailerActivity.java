@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,7 +21,9 @@ import android.widget.Toast;
 import com.appyvet.materialrangebar.RangeBar;
 import com.diatom.kasicomat.async.GetKorisnikPlanAsyncTask;
 import com.diatom.kasicomat.async.InsertKorisnikPlanAsyncTask;
+import com.diatom.kasicomat.async.InsertPonudaAsyncTask;
 import com.diatom.kasicomat.db.entities.KorisnikPlan;
+import com.diatom.kasicomat.db.entities.Ponuda;
 import com.diatom.kasicomat.dto.PonudaDTO;
 import com.diatom.kasicomat.dto.RetailerPregledDTO;
 import com.diatom.kasicomat.util.StringUtils;
@@ -91,7 +94,6 @@ public class FakeRetailerActivity extends AppCompatActivity {
         List<KorisnikPlan> fakeData = null;
         try {
             fakeData = new GetKorisnikPlanAsyncTask(FakeRetailerActivity.this).execute().get();
-            Toast.makeText(this, StringUtils.mkString(fakeData), Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,6 +121,7 @@ public class FakeRetailerActivity extends AppCompatActivity {
             public TextView mTextKorisnik;
             public TextView mTextProizvod;
             public TextView mTextProcenatSakupljenog;
+            public Button mPonudaButton;
 
             public ViewHolder(View v) {
                 super(v);
@@ -126,6 +129,7 @@ public class FakeRetailerActivity extends AppCompatActivity {
                 mTextKorisnik = (TextView) v.findViewById(R.id.textKorisnik);
                 mTextProizvod = (TextView) v.findViewById(R.id.textNazivPredmeta);
                 mTextProcenatSakupljenog = (TextView) v.findViewById(R.id.textProcenatSakupljenogRetailer);
+                mPonudaButton = v.findViewById(R.id.btnPosaljiPonudu);
             }
 
             @Override
@@ -156,11 +160,26 @@ public class FakeRetailerActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final FakeRetailerActivity.MyAdapter.ViewHolder holder, int position) {
+
             final RetailerPregledDTO retailerPregledDTO = mDataset[position];
 
             holder.mTextKorisnik.setText(retailerPregledDTO.getKorisnik());
             holder.mTextProizvod.setText(retailerPregledDTO.getProizvod());
             holder.mTextProcenatSakupljenog.setText(String.valueOf(retailerPregledDTO.getProcenatSkupljenog()));
+            holder.mPonudaButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(FakeRetailerActivity.this.getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("fake_ponuda", true);
+                    intent.putExtra("nazivProizvoda", retailerPregledDTO.getProizvod());
+                    intent.putExtra("procenatSakupljenog", retailerPregledDTO.getProcenatSkupljenog());
+
+                    new InsertPonudaAsyncTask(FakeRetailerActivity.this).execute(new Ponuda("Gigatron", "DIATOM"));
+
+                    startActivity(intent);
+                }
+            });
+
         }
 
 

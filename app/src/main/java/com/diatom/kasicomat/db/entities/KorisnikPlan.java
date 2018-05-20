@@ -30,4 +30,9 @@ public class KorisnikPlan {
     public void setPlan(List<Plan> plan) {
         this.plan = plan;
     }
+
+    @Override
+    public String toString() {
+        return "KorisnikPlan(" + korisnik.toString() + "," + plan.toString() + ")";
+    }
 }

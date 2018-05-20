@@ -73,6 +73,7 @@ public class DetaljiStednjeActivity extends AppCompatActivity {
                 plan.setRezimId(isKusur ? 1 : 2);
                 plan.setPeriodStednjeId((int) ((Spinner)findViewById(R.id.spinnerPeriodStednje)).getSelectedItemId() + 1);
                 plan.setKategorijaId((int) ((Spinner) findViewById(R.id.spinnerKategorija)).getSelectedItemId() + 1);
+                plan.setKorisnikId(1);
 
                 try {
                     long planId = new InsertPlanAsyncTask(DetaljiStednjeActivity.this).execute(plan).get().get(0);

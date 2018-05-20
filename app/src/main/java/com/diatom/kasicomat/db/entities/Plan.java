@@ -124,4 +124,17 @@ public class Plan {
     public void setKorisnikId(long korisnikId) {
         this.korisnikId = korisnikId;
     }
+
+    @Override
+    public String toString() {
+        return "Plan("
+                + brend + ","
+                + model + ","
+                + cena + ","
+                + sakupljeno + ","
+                + rezimId + ","
+                + periodStednjeId + ","
+                + kategorijaId + ","
+                + korisnikId  + ")";
+    }
 }
