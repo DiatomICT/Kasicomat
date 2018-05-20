@@ -67,7 +67,7 @@ public class PlanActivity extends AppCompatActivity {
             long ukupnoDanaDoKraja = (long) ((d2 - d1) * cilj) / sakupljeno;
 
             long DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
-            long inX = ukupnoDanaDoKraja * DAY_IN_MILLIS + d1;
+            long inX = ukupnoDanaDoKraja + d1;
             ((TextView) findViewById(R.id.textOcekivaniDatumZavrsetkaValue)).setText(new Date(inX).toString());
         } catch (Exception e) {
             e.printStackTrace();
