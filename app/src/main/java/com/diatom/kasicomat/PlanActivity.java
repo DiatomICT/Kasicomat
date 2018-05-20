@@ -45,6 +45,9 @@ public class PlanActivity extends AppCompatActivity {
 
         GraphView graph = findViewById(R.id.graph);
 
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
+        glr.setPadding(32);
+
         try {
             List<Transakcija> transakcije = new GetTransakcijaAsyncTask(PlanActivity.this).execute().get();
             int brojTransakcija = transakcije.size();
