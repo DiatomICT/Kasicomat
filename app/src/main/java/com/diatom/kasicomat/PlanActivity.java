@@ -45,9 +45,6 @@ public class PlanActivity extends AppCompatActivity {
 
         GraphView graph = findViewById(R.id.graph);
 
-        GridLabelRenderer glr = graph.getGridLabelRenderer();
-        glr.setPadding(32);
-
         try {
             List<Transakcija> transakcije = new GetTransakcijaAsyncTask(PlanActivity.this).execute().get();
             int brojTransakcija = transakcije.size();
@@ -114,6 +111,10 @@ public class PlanActivity extends AppCompatActivity {
             graph.getViewport().setMinX(d1);
             graph.getViewport().setMaxX(d3);
             graph.getViewport().setXAxisBoundsManual(true);
+            graph.getViewport().setYAxisBoundsManual(true);
+
+            graph.getViewport().setScalable(true);
+            graph.getViewport().setScalableY(true);
 
             // as we use dates as labels, the human rounding to nice readable numbers
             // is not necessary
